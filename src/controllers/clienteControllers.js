@@ -48,7 +48,7 @@ const buscarClientePorId = async (resq, res) => {
     }
 }
 
-GPUShaderModule.exports = {
+module.exports = {
     listarClientes,
     buscarClientePorId
 };

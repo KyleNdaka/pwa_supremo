@@ -2,11 +2,11 @@
 
 /*module.exports = router;*/
 
-const express = require ("expresss");
-const router = express.roter();
-const clienteController = require("../")
+const express = require("express");
+const router = express.Router();
+const clienteController = require("../controllers/clienteControllers");
 
 router.get("/", clienteController.listarClientes);
-route.get("/:id", clienteController.buscarClientePorId)
+router.get("/:id", clienteController.buscarClientePorId)
 
 module.exports = router;
