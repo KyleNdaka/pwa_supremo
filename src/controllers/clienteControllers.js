@@ -1,4 +1,5 @@
 const clientes = require("../../data/clientes");
+const clientes = require("../../data/clientes");
 
 const listarClientes = async (req, res) =>{
     try{
@@ -48,7 +49,89 @@ const buscarClientePorId = async (resq, res) => {
     }
 }
 
+// post
+
+const adicionarCliente = async(req, res) => {
+    try{
+        const{nome, telefone, enddereco } = req.body;
+        const novo__cliente = new clientes{
+            Cliente.length + 1,
+            nome,
+            telefone,
+            endereco
+            clientes.push(novo__cliente);
+            return res.status(201).json({
+                sucesso: true,
+                mensagem: "Usuario adicionado com sucesso"
+            });
+        }
+    }catch(erro){
+        return res.(500).json({
+            sucesso: false,
+            mensagem: "Erro ao adicionar cliente",
+            erro: erro,mesagem
+        })}
+    };
+        // put /clientes/:id - Atualizar um cliente pelo id:
+
+        const atualizarcliente = async (req, res) =>{
+            try{
+             const { id } = req.params;
+             const { nom, telefone, endereco } = req.body
+             
+             const clientes = clientes.find((c) => c.id == id);
+             
+             if(!Cliente){
+                return res.status(400).json;({
+                    sucesso: true;
+                    mensagem: `Cliente de id ${id} não encontrad`
+                })
+             }else{
+                clientes.nome = nome;
+                clientes.telefone = telefone;
+                clientes.endereco = endereco;
+
+                return res.status(200).json({
+                    sucesso: true,
+                    mensagem: "cliente atualizado com sucesso"
+                })
+             }
+            }catch(error){
+                return res.status(500).json({
+                    sucesso: false,
+                    mensagem: "Erro ao atualizar cliente",
+                    erro: erro.mensagem
+                })
+            }
+        }
+
+//DELETE /clientes/:id - remove um cliente pelo id 
+
+const deletarCliente = async(req, res) => {
+    try{
+        const { id } = req.params;
+        const index = clientes.findIndex((c) => c.id == id);
+
+        if(index === -1){
+            return res.status(400).json({
+                sucesso: false,
+                mensagem: `Cliente de ${id} não encontrado`
+            })
+        }else{
+            clientes.splice(index, 1);
+            return res.status(200).json({
+                sucesso: true,
+                mensagem: `Cliente com ${id} removido com sucesso`
+            });
+        }
+    }catch(erro){
+        d
+    }
+}
 module.exports = {
     listarClientes,
-    buscarClientePorId
+    buscarClientePorId,
+    adicionarCliente,
+    atualizarcliente,
+    deletarCliente,
 };
