@@ -11,9 +11,11 @@ router.get("/:id", clienteController.buscarClientePorId)
 
 
 
-router.post("/:id", clienteController.adicionarCliente);
-router.put("/:id", clienteController.atualizarcliente);
-router.delete("/:id", clienteController.deletarCliente);
+router.get("/", clienteController.listarClientes);          // GET /clientes
+router.get("/:id", clienteController.buscarClientePorId);   // GET /clientes/:id
+router.post("/", clienteController.adicionarCliente);       // POST /clientes (Sem o :id aqui!)
+router.put("/:id", clienteController.atualizarCliente);     // PUT /clientes/:id
+router.delete("/:id", clienteController.deletarCliente);  // DELETE /clientes/:id
 
 
 module.exports = router;

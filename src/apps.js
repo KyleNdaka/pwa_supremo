@@ -18,8 +18,7 @@ app.get("/", (req, res) => {
     })
 
 })
-app.use("/", "/clientes", clienteRoutes);
-
+app.use("/clientes", clienteRoutes);
 app.use((req, res) =>{
     res.status(404).json({
         sucesso: false,

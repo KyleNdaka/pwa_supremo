@@ -110,8 +110,7 @@ const adicionarCliente = async(req, res) => {
 const deletarCliente = async(req, res) => {
     try{
         const { id } = req.params;
-        const index = clientes.findIndex((c) => c.id == id);
-
+        const index = clientes.findIndex(c => c.id == id);
         if(index === -1){
             return res.status(400).json({
                 sucesso: false,
